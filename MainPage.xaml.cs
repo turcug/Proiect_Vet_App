@@ -1,25 +1,38 @@
-﻿namespace Proiect_Vet_App
+﻿using Proiect_Vet_App.Models;
+
+namespace Proiect_Vet_App
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
 
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        protected override async void OnAppearing()
         {
-            count++;
+            base.OnAppearing();
+            listView.ItemsSource = await App.Database.GetAnimalsAsync();
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+        async void OnAnimalAddedClick(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Date_Pacient
+            {
+                BindingContext = new Animal()
+            });
+        }
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                await Navigation.PushAsync(new Date_Pacient
+                {
+                    BindingContext = e.SelectedItem as Animal
+                });
+            }
         }
     }
-
 }

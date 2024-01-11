@@ -4,12 +4,12 @@
              x:Class="Proiect_Vet_App.AboutPage"
              Title="AboutPage">
     <VerticalStackLayout>
-        <HorizontalStackLayout Spacing="10">
+        <HorizontalStackLayout  Padding="30,0" Spacing="10">
             <Image Source="pet.jpeg"
                    SemanticProperties.Description="Our Health Care App for Pets"
-                   HeightRequest="64" />
+                   HeightRequest="70" />
             <Label FontSize="22" FontAttributes="Bold" Text ="Carnet de Sanatate" VerticalOptions="End" />
         </HorizontalStackLayout>
-        <Label Text="Aceasta aplicatie este gandita ca si un carnet de sanatate virtual" />
+        <Label Padding="20,0" Text="Aceasta aplicatie este gandita ca si un carnet de sanatate virtual" />
     </VerticalStackLayout>
 </ContentPage>
