@@ -61,17 +61,17 @@ namespace Proiect_Vet_App.Data
                             .FirstOrDefaultAsync();
         }
 
-        public async Task<int> SaveAnimalAsync(Animal sanimal)
+        public Task<int> SaveAnimalAsync(Animal sanimal)
         {
             try
             {
                 if (sanimal.ID != 0)
                 {
-                    return await _database.UpdateAsync(sanimal);
+                    return _database.UpdateAsync(sanimal);
                 }
                 else
                 {
-                    return await _database.InsertAsync(sanimal);
+                    return _database.InsertAsync(sanimal);
                 }
             }
             catch (Exception ex)

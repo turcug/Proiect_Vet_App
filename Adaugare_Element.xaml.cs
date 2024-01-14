@@ -40,7 +40,6 @@ namespace Proiect_Vet_App
             Console.WriteLine("Save button clicked");
             string nume = SavedAnimal.Nume;
             string specie = SavedAnimal.Specie;
-            int varsta = SavedAnimal.Varsta;
         }
 
         private void OnDeleteButtonClicked(object sender, EventArgs e)

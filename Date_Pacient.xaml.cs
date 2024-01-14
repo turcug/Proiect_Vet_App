@@ -6,7 +6,34 @@ namespace Proiect_Vet_App
 {
     public partial class Date_Pacient : ContentPage
     {
-        private Animal currentAnimal;
+        public Date_Pacient() { 
+            InitializeComponent();
+        }
+
+        async void OnSaveButtonClicked(object sender, EventArgs e)
+        {
+            var sanimal = (Animal)BindingContext;
+            sanimal.Nume = Nume_Pacient.Text;
+            sanimal.Specie = Specie_Pacient.Text;
+            sanimal.DataNasterii = DataNasteriiPicker.Date;
+            await App.Database.SaveAnimalAsync(sanimal);
+            await Navigation.PopAsync();
+        }
+        async void OnDeleteButtonClicked(object sender, EventArgs e)
+        {
+            var sanimal = (Animal)BindingContext;
+            await App.Database.DeleteAnimalAsync(sanimal);
+            await Navigation.PopAsync();
+        }
+        async void OnGoToAdaugareElementClicked(object sender, EventArgs e)
+        {
+            var sanimal = (Animal)BindingContext;
+            await Navigation.PushAsync(new Adaugare_Element(sanimal));
+        }
+    }
+}
+/*
+ private Animal currentAnimal;
         private DateTime? _selectedDataNasterii;
 
         public DateTime SelectedDataNasterii
@@ -35,8 +62,6 @@ namespace Proiect_Vet_App
 
             currentAnimal = new Animal();
             BindingContext = currentAnimal;
-
-            // Set up binding for DataNasteriiPicker
             DataNasteriiPicker.SetBinding(DatePicker.DateProperty, new Binding(nameof(SelectedDataNasterii), BindingMode.TwoWay));
         }
 
@@ -50,10 +75,13 @@ namespace Proiect_Vet_App
             if (savedAnimal != null)
             {
                 currentAnimal = savedAnimal;
+
+                // Set BindingContext and SelectedDataNasterii after loading from the database
                 BindingContext = currentAnimal;
                 SelectedDataNasterii = currentAnimal.DataNasterii;
             }
         }
+
 
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
@@ -82,5 +110,4 @@ namespace Proiect_Vet_App
             var sanimal = (Animal)BindingContext;
             await Navigation.PushAsync(new Adaugare_Element(sanimal));
         }
-    }
-}
+ */

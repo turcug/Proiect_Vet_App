@@ -17,8 +17,6 @@ namespace Proiect_Vet_App.Models
         public string Nume { get; set; }
 
         public string Specie { get; set; }
-
-        public int Varsta { get; set; }
         public DateTime DataNasterii { get; set; }
     }
 }
