@@ -68,6 +68,9 @@
 	  <MauiXaml Update="AboutPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Adaugare_Element.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Date_Pacient.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

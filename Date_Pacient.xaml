@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Proiect_Vet_App.Date_Pacient"
-             Title="Date Pacient">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Proiect_Vet_App.Date_Pacient"
+    Title="Date Pacient">
     <StackLayout Margin="20">
-        <Editor Placeholder="Introduceti Date despre Pacient"
+        <Label Text="Nume: " FontSize="18" FontAttributes="Bold" />
+        <Editor x:Name="Nume_Pacient"
+                Placeholder="Introduceti numele pacientului"
                 Text="{Binding Nume}"
-                HeightRequest="100" />
+                HeightRequest="50" />
+        <Label Text="Specie: " FontSize="18" FontAttributes="Bold" />
+        <Editor x:Name="Specie_Pacient"
+                Placeholder="Introduceti specia pacientului"
+                Text="{Binding Specie}"
+                HeightRequest="50" />
+        <Label Text="Alege data nasterii: " FontSize="18" FontAttributes="Bold" />
+        <DatePicker x:Name="DataNasteriiPicker"
+                    Date="{Binding DataNasterii}" />
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Text="Save"
-                    Clicked="OnSaveButtonClicked" />
-            <Button Grid.Column="1"
-                    Text="Delete"
-                    Clicked="OnDeleteButtonClicked" />
+            <Button Text="Save" Clicked="OnSaveButtonClicked" />
+            <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked" />
         </Grid>
+        <Button Text="Go to Adaugare Element" Clicked="OnGoToAdaugareElementClicked" />
     </StackLayout>
 </ContentPage>

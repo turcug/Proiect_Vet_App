@@ -1,19 +1,20 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SQLite;
 using SQLiteNetExtensions.Attributes;
 
 namespace Proiect_Vet_App.Models
 {
-    public class Specie
+    internal class Element_Animal
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey,AutoIncrement]
         public int ID { get; set; }
-        public int Nume_Specie { get; set; }
-        [ForeignKey(typeof(Animal))]
+        [SQLiteNetExtensions.Attributes.ForeignKey(typeof(Animal))]
         public int AnimalID { get; set; }
+        public int ElementID { get; set; }
     }
 }

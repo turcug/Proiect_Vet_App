@@ -14,7 +14,7 @@
         <ListView x:Name="listView" Margin="20" ItemSelected="OnListViewItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Nume}" Detail="{Binding Data_Nastere}" />
+                    <TextCell Text="{Binding Nume}" Detail="{Binding Specie}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

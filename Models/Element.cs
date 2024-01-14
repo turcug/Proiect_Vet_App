@@ -8,16 +8,16 @@ using SQLiteNetExtensions.Attributes;
 
 namespace Proiect_Vet_App.Models
 {
-    public class Deparazitari
+    public class Element
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        [MaxLength(40)]
-        public string Detalii { get; set; }
+        [MaxLength(30)]
+        public string Tip_Element { get; set; }
         public DateTime Data_Realizare { get; set; }
-        public DateTime Data_Expirare { get; set; }
-        public string Type { get; set; }
-        [ForeignKey(typeof(Animal))]
-        public int AnimalID { get; set; }
+        public DateTime Data_Repetare { get; set; }
+        [MaxLength(150)]
+        public string Observatii { get; set; }
+
     }
 }
