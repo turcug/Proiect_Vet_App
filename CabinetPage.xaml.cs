@@ -28,7 +28,7 @@ public partial class CabinetPage : ContentPage
     async void OnAfiseazaHarta(object sender, EventArgs e)
 	{
 		var cabinet = (Cabinet)BindingContext;
-		var adresa = cabinet.Adresa_Cabinet;
+		var adresa = AdresaCabinet.Text;
 		var locatii = await Geocoding.GetLocationsAsync(adresa);
 		var optiuni = new MapLaunchOptions
 		{
