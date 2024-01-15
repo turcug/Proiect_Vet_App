@@ -17,6 +17,27 @@ namespace Proiect_Vet_App.Data
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Animal>().Wait();
             _database.CreateTableAsync<Proiect_Vet_App.Models.Element>().Wait();
+            _database.CreateTableAsync<Cabinet>().Wait();
+        }
+
+        public Task<List<Cabinet>> GetCabinetsAsync()
+        {
+            return _database.Table<Cabinet>().ToListAsync();
+        }
+        public Task<int> SaveCabinetAsync(Cabinet cabinet)
+        {
+            if (cabinet.ID != 0)
+            {
+                return _database.UpdateAsync(cabinet);
+            }
+            else
+            {
+                return _database.InsertAsync(cabinet);
+            }
+        }
+        public Task<int> DeleteCabinetAsync(Cabinet cabinet)
+        {
+            return _database.DeleteAsync(cabinet);
         }
 
         public async Task<List<Proiect_Vet_App.Models.Element>> GetElementsAsync(int animalId)
@@ -63,22 +84,16 @@ namespace Proiect_Vet_App.Data
 
         public Task<int> SaveAnimalAsync(Animal sanimal)
         {
-            try
+
+            if (sanimal.ID != 0)
             {
-                if (sanimal.ID != 0)
-                {
-                    return _database.UpdateAsync(sanimal);
-                }
-                else
-                {
-                    return _database.InsertAsync(sanimal);
-                }
+                return _database.UpdateAsync(sanimal);
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine($"Error in SaveAnimalAsync: {ex.Message}");
-                throw;
+                return _database.InsertAsync(sanimal);
             }
+
         }
 
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proiect_Vet_App.CabinetPage"
+             Title="Pagina Cabinet">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <Label Text="Nume Cabinet: " FontSize="18" FontAttributes="Bold" />
+            <Editor  x:Name="NumeCabinet"
+                    Placeholder="Introduceti Numele Cabinetului:" Margin="20"
+                    Text="{Binding Nume_Cabinet}"
+                    HeightRequest="50" />
+            <Label Text="Adresa Cabinet: " FontSize="18" FontAttributes="Bold" />
+            <Editor  x:Name="AdresaCabinet"
+                    Placeholder="Introduceti Adresa Cabinetului:" Margin="20"
+                    Text="{Binding Adresa_Cabinet}"
+                    HeightRequest="50" />
+            <Label Text="Ora Deschidere: " FontSize="18" FontAttributes="Bold" />
+            <TimePicker x:Name="OraDeschiderePicker" Margin="20"
+                        Time="{Binding Ora_Deschidere}"
+                        HeightRequest="50" />
+
+            <Label Text="Ora Inchidere: " FontSize="18" FontAttributes="Bold" />
+            <TimePicker x:Name="OraInchiderePicker" Margin="20"
+                        Time="{Binding Ora_Inchidere}"
+                        HeightRequest="50" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Save" Clicked="OnSaveButton" />
+                <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButton" />
+            </Grid>
+            <Button Grid.Row="1" Text="Adauga Element in Carnet" Clicked="OnAfiseazaHarta" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

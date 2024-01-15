@@ -6,6 +6,7 @@ namespace Proiect_Vet_App
 {
     public partial class Date_Pacient : ContentPage
     {
+
         private Proiect_Vet_App.Models.Element selectedElement;
         public Date_Pacient() { 
             InitializeComponent();
@@ -14,7 +15,12 @@ namespace Proiect_Vet_App
         {
             base.OnAppearing();
             var animal = (Animal)BindingContext;
-            Istoric_Elemente.ItemsSource = await App.Database.GetElementsAsync(animal.ID);
+            var elements = await App.Database.GetElementsAsync(animal.ID);
+            elements = elements.OrderByDescending(e => e.Data_Realizare).ToList();
+            Istoric_Elemente.ItemsSource = elements;
+            var cabinete = await App.Database.GetCabinetsAsync();
+            Cabinet_Picker.ItemsSource = (System.Collections.IList)cabinete;
+            Cabinet_Picker.ItemDisplayBinding = new Binding("Detalii_Cabinet");
         }
 
         async void OnSaveButtonClicked(object sender, EventArgs e)

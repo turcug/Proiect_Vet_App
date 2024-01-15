@@ -20,7 +20,7 @@ namespace Proiect_Vet_App.Models
         public DateTime Data_Repetare { get; set; }
         [SQLiteNetExtensions.Attributes.ForeignKey(typeof(Animal))]
         public int AnimalID { get; set; }
-        
+        public bool ShowDataRepetare => Data_Repetare != Data_Realizare;
 
     }
 }

@@ -18,5 +18,7 @@ namespace Proiect_Vet_App.Models
 
         public string Specie { get; set; }
         public DateTime DataNasterii { get; set; }
+        [ForeignKey(typeof(Cabinet))]
+        public int CabinetID { get; set; }
     }
 }

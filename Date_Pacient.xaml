@@ -23,14 +23,25 @@
             <Label Text="Alege data nasterii: " FontSize="18" FontAttributes="Bold" />
             <DatePicker x:Name="DataNasteriiPicker"
                         Date="{Binding DataNasterii}" />
+            <Label Text="Alege Cabinet Veterinar: " FontSize="18" FontAttributes="Bold" />
+            <Picker x:Name="Cabinet_Picker" Title="Alege un cabinet pentru companionul tau"/>
             <Label Text="Vaccinari/ Deparazitari/ Interventii: " FontSize="18" FontAttributes="Bold" />
-            <ListView x:Name="Istoric_Elemente" Margin="20"  ItemSelected="OnIstoricElementSelected">
+            <ListView x:Name="Istoric_Elemente" Margin="20" ItemSelected="OnIstoricElementSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Detail="{Binding Tip_Element}" />
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Tip_Element}" FontSize="18" FontAttributes="Bold" />
+                                <HorizontalStackLayout IsVisible="{Binding ShowDataRepetare}">
+                                    <Label Text="Data Repetare:"/>
+                                    <Label Text="{Binding Data_Repetare, StringFormat='{0:d}'}"/>
+                                </HorizontalStackLayout>
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />

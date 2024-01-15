@@ -9,6 +9,7 @@
 
     <TabBar>
         <ShellContent Title="Carnet de Sanatate" ContentTemplate="{DataTemplate local:MainPage}" />
+        <ShellContent Title="Cabinete Veterinare" ContentTemplate="{DataTemplate local:Adaugare_Cabinete}" />
         <ShellContent Title="About" ContentTemplate="{DataTemplate local:AboutPage}" />
     </TabBar>
 </Shell>
