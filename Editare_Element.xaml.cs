@@ -3,28 +3,33 @@ using Proiect_Vet_App.Models;
 
 namespace Proiect_Vet_App
 {
-    public partial class Adaugare_Element : ContentPage
+    public partial class Editare_Element : ContentPage
     {
         private Animal SavedAnimal;
+        private Proiect_Vet_App.Models.Element element;
 
-
-        public Adaugare_Element(Animal savedAnimal)
+        public Editare_Element(Proiect_Vet_App.Models.Element selectedElement)
         {
             InitializeComponent();
-            SavedAnimal = savedAnimal;
-            BindingContext = new Proiect_Vet_App.Models.Element();
+            element = selectedElement;
+            BindingContext = element;
             Enable_Data_Repetare.IsToggled = false;
             Data_Repetare_Picker.IsEnabled = false;
         }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            var el = (Proiect_Vet_App.Models.Element)BindingContext;
+
+        }
         private void OnEnableSecondDateToggled(object sender, ToggledEventArgs e)
         {
-            Data_Repetare_Picker.IsEnabled = e.Value; 
+            Data_Repetare_Picker.IsEnabled = e.Value;
         }
 
         private async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             var elem = (Proiect_Vet_App.Models.Element)BindingContext;
-            elem.AnimalID = SavedAnimal.ID;
             elem.Tip_Element = Tip_Element.Text;
             elem.Observatii = Element_Observatii.Text;
             elem.Data_Realizare = Data_Realizare_Picker.Date;

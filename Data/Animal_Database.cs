@@ -19,11 +19,11 @@ namespace Proiect_Vet_App.Data
             _database.CreateTableAsync<Proiect_Vet_App.Models.Element>().Wait();
         }
 
-        // Methods for Element class
-        public Task<List<Proiect_Vet_App.Models.Element>> GetElementsAsync()
+        public async Task<List<Proiect_Vet_App.Models.Element>> GetElementsAsync(int animalId)
         {
-            return _database.Table<Proiect_Vet_App.Models.Element>().ToListAsync();
+            return await _database.Table<Proiect_Vet_App.Models.Element>().Where(x => x.AnimalID == animalId).ToListAsync();
         }
+
 
         public Task<Proiect_Vet_App.Models.Element> GetElementAsync(int id)
         {

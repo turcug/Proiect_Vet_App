@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Proiect_Vet_App.Adaugare_Element"
-             Title="Adaugare_Element">
+             x:Class="Proiect_Vet_App.Editare_Element"
+             Title="Editare_Element">
     <StackLayout Margin="20">
         <Label Text="Tip Element: " FontSize="18" FontAttributes="Bold" />
         <Editor x:Name="Tip_Element"
@@ -10,7 +10,8 @@
                 Text="{Binding Tip_Element}"
                 HeightRequest="50" />
         <Label Text="Alegeti data realizarii: " FontSize="18" FontAttributes="Bold" />
-        <DatePicker x:Name="Data_Realizare_Picker" />
+        <DatePicker x:Name="Data_Realizare_Picker" 
+                    Date="{Binding Data_Realizare}"/>
         <Label Text="Observatii: " FontSize="18" FontAttributes="Bold" />
         <Editor x:Name="Element_Observatii"
                 Placeholder="Introduceti Observatii despre Element"
@@ -21,7 +22,9 @@
             <Switch x:Name="Enable_Data_Repetare" Toggled="OnEnableSecondDateToggled" />
         </HorizontalStackLayout>
         <Label Text="Alegeti data pentru repetarea interventiei: " FontSize="18" FontAttributes="Bold" />
-        <DatePicker x:Name="Data_Repetare_Picker" />
+        <DatePicker x:Name="Data_Repetare_Picker"
+                    Date="{Binding Data_Repetare}"/>
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
